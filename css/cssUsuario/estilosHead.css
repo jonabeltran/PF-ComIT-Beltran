@@ -1,0 +1,163 @@
+header{
+    height: 90px;
+    background: #0000ff; 
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.logo{
+    float: left;
+    font-size: 2rem;
+    margin-right: auto;
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+}
+ 
+.menu_principal ul{
+     display: flex;/*para que se ponga todo en una sola linea*/
+     list-style: none;
+ /*    background: #0000ff;*/ 
+     top: 78px;
+ }
+
+.menu_principal ul ul{
+    display: none;
+    z-index: 2;
+    background: #0000ff;
+}
+
+.menu_principal a{
+    color:#fff;
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu_principal a:hover{     
+    background: rgba(0, 0, 0, 0.3); 
+}
+
+.menu_principal ul li:hover ul{
+    display: block;
+    position: absolute;
+}
+
+.menu_principal li .icono{
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+#caja{
+    /*  overflow: auto;*/
+      overflow-x: hidden;/*escondo un scrol horizontal*/
+      border: 1px solid #000;
+      position: relative;
+  }
+
+@media  ( max-width:800px ){
+    
+    #caja{
+        width: 100%;
+    }
+
+    header{
+        height: 50px;
+        padding: 2em 0;
+        align-items: center;
+    }
+
+    .logo{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-left: 15px;
+    }
+
+    .menu_principal  li{
+        border-bottom: 1px solid #575766;
+    }
+      
+    .menu_principal  li:last-child{
+          border-bottom: none;
+    }
+
+    .menu_principal ul ul{
+        background: #008069;
+        
+    }
+
+    .menu_principal ul{
+        flex-direction: column;
+    }
+
+    .menu_principal ul li:hover ul{
+        position: static;/* le quitamo el position absolute*/
+    
+    }
+
+    .menu_principal {
+        top: 57px;
+        height: auto;
+        width: auto;
+        position: absolute;
+        z-index: 1;
+        background: #464655;
+        right: 0%;
+        clip-path: circle(0px at top right);
+        transition: all ease-in-out 500ms;
+        z-index: 2;
+    }
+    
+    .menu--open{
+        clip-path: circle(250% at top right); 
+    }
+
+    .menu-toggle{
+       padding: 2em;
+       position: absolute;
+       right: -0.5em;
+       cursor: pointer;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        display: block;
+        background: #EBEBD3;
+        height: 3px;
+        width: 1.75em;
+        border-radius: 3px;
+        transition: all ease-in-out 500ms;
+    }
+
+    .hamburger::before {
+       transform: translateY(-6px);
+    }
+
+    .hamburger::after {
+       transform: translateY(3px);
+    }
+
+    .open .hamburger {
+       transform: rotate(45deg);
+    }
+
+    .open .hamburger::before {
+       opacity: 0;
+    }
+
+    .open .hamburger::after {
+       transform: translateY(-3px) rotate(-90deg);
+    }
+
+/*---------------------------------------------*/
+
+
+
+}

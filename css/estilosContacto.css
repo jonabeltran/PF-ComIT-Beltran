@@ -1,0 +1,57 @@
+#dire_map{
+    position: relative;
+    display: flex;/*coloca todos los elementos que estan dentro del padre en forma horizontal*/
+    flex-direction: wrap;/*la direccion de las cajas se pondran en filas*/
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#mi_direccion{
+    background: #46465552;
+    width: 49%;
+    padding-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#mapaGoolge{
+    width: 49%;
+}
+
+#mapaGoolge iframe{
+    height: 100%;
+    width: 100%;
+}
+
+#mi_mensaje{
+    background: #46465552;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mi_icono{
+    font-size: 20px;
+}
+
+@media  ( max-width:800px ){
+
+    #dire_map{
+        flex-direction: column;
+    }
+
+    #mi_direccion{
+        width: 100%;
+    }
+
+    #mapaGoolge{
+        width: 100%;
+        height: 210px;
+        margin-top: 20px;
+
+    }
+    
+
+}
+
+

@@ -1,0 +1,16 @@
+
+
+
+#mi_texto{
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+
+
+@media  ( max-width:800px ){
+    .miCaption, .circulos{
+        display: none;
+   }
+}

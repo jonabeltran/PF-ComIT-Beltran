@@ -1,0 +1,18 @@
+footer{
+    clear: both;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #000;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.mis_columnas{
+    text-align: center;
+}
+
+.mis_columnas a{
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+}

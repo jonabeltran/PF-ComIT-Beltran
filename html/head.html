@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="css/estilosHead.css">
+
+    <script type="text/javascript">
+      
+      $(document).ready(function(e){
+
+        $(".site-nav ul a").click(function(e){
+            var url=$(this).attr("href");
+            $(".mi_galeria").load(url);
+              return false;
+        });
+
+        $('.menu-toggle').click(function() {
+           $('.site-nav').toggleClass('site-nav--open', 500);
+           $(this).toggleClass('open');
+        });
+
+        $('#enviar').click(function(){
+            var nom_ape=$("#fname").val();
+            var email=$("#email").val();
+            var phone=$("#phone").val();
+            var adress=$("#adress").val();
+            var pass=$("#pass").val();
+            $.ajax({
+               type:"POST",
+               url:"php/insertarUsuario.php",
+               data:{"name":nom_ape,"email":email,"phone":phone,"adress":adress,"pass":pass},    
+            }).done(function(respuesta){
+                if(respuesta!="Registro Insertado"){
+                    alertify.error(respuesta);
+                }else{
+                  alertify.success(respuesta);
+                }
+            });
+        });
+
+        $('#ingresar').click(function(){
+            var email=$("#email2").val();
+            var psw=$("#psw").val();
+            if(email=="" || psw==""){
+                alertify.error("Campos Vacios"); 
+            }
+        });
+
+    });
+
+    </script>
+  
+</head>
+<body>
+
+     <header>
+      <div class="container">
+         <h1 class="logo">Ciclo<span>Bahia</span></h1>
+
+         <nav class="site-nav">
+          <ul>
+            <li><a href="html/sec_inicio.html"><span><i class="fas fa-home"></i></span>Inicio</a></li>   
+            <li><a href="html/sec_contacto.html"><span><i class="fas fa-map-marker-alt"></i></span>Donde Estamos</a></li>
+            <li><a href="html/sec_novedades.html"><span><i class="fas fa-bullhorn"></i></span>Novedades</a></li>
+            <button type="button" class="btn_log btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Mi Cuenta
+             </button>
+             <button type="button" class="btn_reg btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Registrarse
+             </button>
+          </ul>
+         </nav>
+         
+         <div class="menu-toggle">
+           <div class="hamburger"></div>
+         </div>
+
+      </div> 
+     </header>  
+
+     
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="text-center">Ingrese a su Cuenta</h4>
+            </div>
+            <div class="modal-body">
+
+                    <form class="form-horizontal" method="post" action="php/entrarCuenta.php">
+                            <fieldset>
+        
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-at"></i></span>
+                                    <div class="col-md-8">
+                                        <input id="email2" name="email2" type="text" placeholder="Email" class="form-control">
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-unlock-alt"></i></span>
+                                    <div class="col-md-8">
+                                        <input id="psw" name="psw" type="password" placeholder="Ingrese su Contraseña" class="form-control">
+                                    </div>
+                                </div>
+        
+                            </fieldset>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Ingresar" id="ingresar">
+                            </div>
+
+                  </form>   
+            
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-center">Complete los Datos</h4>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!--formularios con iconos  -->
+                  <form class="form-horizontal" method="post" action="php/insertarUsuario.php">
+                      <fieldset>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-user"></i></span>
+                              <div class="col-md-8">
+                                  <input id="fname" name="name" type="text" placeholder="Nombre y Apellido completos" class="form-control">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-at"></i></span>
+                              <div class="col-md-8">
+                                  <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-phone"></i></span>
+                              <div class="col-md-8">
+                                  <input id="phone" name="phone" type="text" placeholder="Telefono" class="form-control">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-address-card"></i></span>
+                            <div class="col-md-8">
+                                <input id="adress" name="adress" type="text" placeholder="Direccion" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-unlock-alt"></i></span>
+                            <div class="col-md-8">
+                                <input id="pass" name="pass" type="password" placeholder="Elija una Contraseña" class="form-control">
+                            </div>
+                        </div>
+  
+                      </fieldset>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                           data-dismiss="modal">
+                                 Cerrar
+                        </button>
+                      <!--  <input type="submit" name="enviar" id="enviar" value="Enviar">-->
+                         <button type="button" class="btn btn-primary" id="enviar">
+                            Enviar
+                        </button>
+
+                      </div>
+
+                    </form>    
+        <!-- fin de formularios con iconos -->
+      </div>
+      
+     
+      
+    </div>
+  </div>
+</div>
+
+    
+</body>
+</html>

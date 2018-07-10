@@ -1,0 +1,19 @@
+/*aside{
+    width: 79%;
+    float: right;
+    background: white;
+    padding: 20px;
+    box-sizing: border-box;
+}*/
+
+/*img{
+   width: 100%;
+   height: auto;
+}*/
+
+@media  ( max-width:800px ){
+   /* aside{
+        width: 100%;
+        
+    }*/
+}

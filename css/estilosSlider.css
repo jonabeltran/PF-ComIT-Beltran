@@ -1,0 +1,23 @@
+
+aside{
+    width: 79%;
+    float: right;
+    background: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#mi_texto{
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+
+
+@media  ( max-width:800px ){
+    aside{
+        width: 100%;
+        
+    }
+}
