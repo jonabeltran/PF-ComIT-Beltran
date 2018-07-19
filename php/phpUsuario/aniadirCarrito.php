@@ -1,6 +1,6 @@
 <?php   
 
- session_start();  
+ session_start();   
  
  if (isset($_SESSION['carrito'])) {
     //    echo 'entre a insertar';
@@ -52,6 +52,8 @@
               $primero); 
 
         $_SESSION['carrito']=$arreglo;
+        
+        setcookie("cookie1",$categoria,time()+86400,"/ciclobahia2/"); 
 
         echo $result="Array creado";
  }

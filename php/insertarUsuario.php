@@ -1,19 +1,15 @@
 <?php
-
-if(empty($_POST["name"])||empty($_POST["email"])||empty($_POST["phone"])||empty($_POST["adress"])||empty    ($_POST["pass"])){
-  echo $respuesta="Campos Vacios";
-}else{
-
+session_start();
 require_once("funciones.php");
 require_once("coneccion.php");
 
-$nombre=$_POST["name"];
+$nombre=$_POST["nombres"];
 
 $email=$_POST["email"];
 
-$tel=$_POST["phone"];
+$tel=$_POST["tel"];
 
-$dire=$_POST["adress"];
+$dire=$_POST["dire"];
 
 $contrasenia_usuario=$_POST["pass"];
 
@@ -27,24 +23,31 @@ $pass_cifrado=encriptar($contrasenia_usuario);
 
   	$base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-     $base->exec("SET CHARACTER SET utf8");
+    $base->exec("SET CHARACTER SET utf8");
     //----------------------------------------
     $seEncuentra=buscar($email,$base);
     if($seEncuentra==true){
-      echo $respuesta="Email Repetido";
+       echo "<h1>El Email Ya Existe</h1>";
+       echo "<script>location.href='../index.php'</script>";
     }else{
     
-    //-------------------------------------------  
+        //-------------------------------------------  
 
-  	$sql="INSERT INTO usuarios (nombres, email, tel, direccion, password) VALUES (:name, :email, :phone, :adress, :pass)";
+        $sql="INSERT INTO usuarios (nombres, email, tel, direccion, password) VALUES (:nombres, :email, :tel, :dire, :pass)";
 
-  	$resultado=$base->prepare($sql);
+        $resultado=$base->prepare($sql);
 
-  	$resultado->execute(array(":name" => $nombre, ":email" =>$email, ":phone" => $tel, ":adress" =>$dire,  ":pass" =>$pass_cifrado));
-
-    $resultado->closeCursor();
-
-    echo $respuesta="Registro Insertado";
+        $resultado->execute(array(":nombres" => $nombre, ":email" =>$email, ":tel" => $tel, ":dire" =>$dire,  ":pass" =>$pass_cifrado));
+        //-----------------------------------------------
+      
+        $sql2="select * from usuarios where email='".$email."'";
+        $resultado2=$base->prepare($sql2);
+        $resultado2->execute(array(":email"=>$email));
+        $registro=$resultado2->fetch(PDO::FETCH_ASSOC);
+        
+        $_SESSION['nom_usuario']=$registro['nombres'];
+        $_SESSION['id_usuario']=$registro['id'];
+        header('Location:../index_usuario.php');
       
     }
 
@@ -54,6 +57,7 @@ $pass_cifrado=encriptar($contrasenia_usuario);
 
   }
 
-}
   ?>
+
+
 

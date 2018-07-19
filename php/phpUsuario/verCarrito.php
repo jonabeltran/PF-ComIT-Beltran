@@ -1,9 +1,10 @@
+<?php
+session_start();  
+?>
+
 <link rel="stylesheet" href="css/cssUsuario/estilosPedidos.css">
 
 <?php
-
-session_start();  
-
 
 if (isset($_SESSION['carrito'])){
      $array=$_SESSION['carrito'];

@@ -1,3 +1,8 @@
+.container{
+    width: 98%;
+    margin: 0 auto;
+} 
+
 header{
     height: 90px;
     background: #0000ff; 
@@ -43,10 +48,7 @@ header{
     background: rgba(0, 0, 0, 0.3); 
 }
 
-.menu_principal ul li:hover ul{
-    display: block;
-    position: absolute;
-}
+
 
 .menu_principal li .icono{
     margin-right: 10px;
@@ -59,6 +61,13 @@ header{
       border: 1px solid #000;
       position: relative;
   }
+
+@media  ( min-width:800px ){
+    .menu_principal ul li:hover ul{ 
+        display: block;
+        position: absolute;
+    }
+}  
 
 @media  ( max-width:800px ){
     

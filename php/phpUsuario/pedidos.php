@@ -13,7 +13,7 @@ if(session_status()==PHP_SESSION_NONE){
 <body>
 
    <?php
-     include("../coneccion.php");
+     include("C:/xampp/htdocs/ciclobahia2/php/coneccion.php");
      $modelo=new conexion();
      try{
          $sql="select * from pedidos

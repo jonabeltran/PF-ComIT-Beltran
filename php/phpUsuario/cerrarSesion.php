@@ -1,6 +1,11 @@
 <?php
 
   session_start();
+
+  $date=new DateTime();
+  $fecha=$date->format('Y-m-d');  
+
+  setcookie("cookie2",$fecha,time()+86400,"/ciclobahia2/"); 
   
   session_destroy();
 

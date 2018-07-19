@@ -1,6 +1,5 @@
 <?php
-  session_start();
-
+ //session_start(); 
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@
                       </li>  
                     </ul>
                    </nav>
-                   
+                    
                    <div class="menu-toggle">
                      <div class="hamburger"></div>
                    </div> 

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <link rel="stylesheet" href="css/cssUsuario/estilosGaleria.css">
 
@@ -8,7 +11,6 @@
 
 
 <?php
-session_start();
 
 $categoria=$_POST['categoria']; 
 
@@ -133,9 +135,9 @@ $(document).ready(function (e) {
         var pagina = $(this).attr('data-pag');
         if (cant == '') {
             alertify.error('No Agrego la Cantidad!!!');
-        }else if(cant<=0 || cant>stock){
+        }else if(cant<=0 || cant>parseInt(stock)){
             alertify.error('Cantidad Incorrecta!!!');
-        }else {
+        }else { 
             $.ajax({
                 type: 'POST',
                 url: 'php/phpUsuario/aniadirCarrito.php',

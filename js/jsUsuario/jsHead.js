@@ -11,15 +11,17 @@ $(document).ready(function (e) {
     
     $('.menu_principal ul li:has(ul)').click(function (e) {
         e.preventDefault();
-        if ($(this).hasClass('activado')) {
-            $(this).removeClass('activado');
-            $(this).children('ul').slideUp();
-        } else {
-            $('.menu_principal ul li ul').slideUp();
-            $('.menu_principal ul li').removeClass('activado');
-            $(this).addClass('activado');
-            $(this).children('ul').slideDown();
-        }
+        if ($(document).width() < 800) {
+            if ($(this).hasClass('activado')) {
+                $(this).removeClass('activado');
+                $(this).children('ul').slideUp();
+            } else {
+                $('.menu_principal ul li ul').slideUp();
+                $('.menu_principal ul li').removeClass('activado');
+                $(this).addClass('activado');
+                $(this).children('ul').slideDown();
+            }
+        } 
     });
 
    /* $("ul").click(function (e) {   
